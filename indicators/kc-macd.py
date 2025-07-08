@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Zerodha Kite Connect - Renko implementation
+Zerodha Kite Connect - MACD implementation
 
 """
 from kiteconnect import KiteConnect
 import pandas as pd
 import datetime as dt
 import os
-import numpy as np
-from stocktrends import Renko
 
 cwd = os.chdir("D:\\Udemy\\Zerodha KiteConnect API\\1_account_authorization")
 
@@ -37,25 +35,19 @@ def fetchOHLC(ticker,interval,duration):
     data.set_index("date",inplace=True)
     return data
 
-def atr(DF,n):
-    "function to calculate True Range and Average True Range"
-    df = DF.copy()
-    df['H-L']=abs(df['high']-df['low'])
-    df['H-PC']=abs(df['high']-df['close'].shift(1))
-    df['L-PC']=abs(df['low']-df['close'].shift(1))
-    df['TR']=df[['H-L','H-PC','L-PC']].max(axis=1,skipna=False)
-    df['ATR'] = df['TR'].ewm(com=n,min_periods=n).mean()
-    #df['ATR'] = df['TR'].ewm(span=n,adjust=False,min_periods=n).mean()
-    return df['ATR']
 
-def renko_DF(DF):
-    "function to convert ohlc data into renko bricks"
+def MACD(DF,a,b,c):
+    """function to calculate MACD
+       typical values a(fast moving average) = 12; 
+                      b(slow moving average) =26; 
+                      c(signal line ma window) =9"""
     df = DF.copy()
-    df.reset_index(inplace=True)
-    df2 = Renko(df)
-    df2.brick_size = 10
-    renko_df = df2.get_ohlc_data()
-    return renko_df
+    df["MA_Fast"]=df["close"].ewm(span=a,min_periods=a).mean()
+    df["MA_Slow"]=df["close"].ewm(span=b,min_periods=b).mean()
+    df["MACD"]=df["MA_Fast"]-df["MA_Slow"]
+    df["Signal"]=df["MACD"].ewm(span=c,min_periods=c).mean()
+    df.dropna(inplace=True)
+    return df
 
-ohlc = fetchOHLC("HDFC","5minute",5)
-renko = renko_DF(ohlc)
+ohlc = fetchOHLC("ICICIBANK","5minute",5)
+macd = MACD(ohlc,12,26,9)

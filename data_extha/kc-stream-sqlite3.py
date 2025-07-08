@@ -2,7 +2,6 @@
 """
 Zerodha Kite Connect - Storing tick level data in db
 
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 
 from kiteconnect import KiteTicker, KiteConnect
@@ -12,7 +11,7 @@ import pandas as pd
 import os
 import sqlite3
 
-cwd = os.chdir("D:\\OneDrive\\Udemy\\Zerodha KiteConnect API\\1_account_authorization")
+cwd = os.chdir("D:\\Zerodha KiteConnect API\\1_account_authorization")
 
 #generate trading session
 access_token = open("access_token.txt",'r').read()

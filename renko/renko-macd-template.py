@@ -2,7 +2,6 @@
 """
 Zerodha Kite Connect - real time renko based strategy template
 
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 
 

@@ -2,7 +2,6 @@
 """
 Zerodha Kite Connect - Renko implementation using streaming Data
 
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 
 

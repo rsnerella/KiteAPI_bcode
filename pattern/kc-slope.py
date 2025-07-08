@@ -2,7 +2,6 @@
 """
 Zerodha Kite Connect - slope of candles to determine trend
 
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 from kiteconnect import KiteConnect
 import pandas as pd

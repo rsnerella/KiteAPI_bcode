@@ -2,7 +2,6 @@
 """
 Zerodha Kite Connect - maru-bozu candle identification
 
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 from kiteconnect import KiteConnect
 import pandas as pd

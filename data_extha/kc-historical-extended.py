@@ -2,14 +2,13 @@
 """
 Zerodha Kite Connect - Fetching Historical Data over extended duration
 
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 from kiteconnect import KiteConnect
 import os
 import datetime as dt
 import pandas as pd
 
-cwd = os.chdir("D:\\Udemy\\Zerodha KiteConnect API\\1_account_authorization")
+cwd = os.chdir("D:\\Zerodha KiteConnect API\\1_account_authorization")
 
 #generate trading session
 access_token = open("access_token.txt",'r').read()

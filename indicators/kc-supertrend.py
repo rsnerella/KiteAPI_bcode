@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Zerodha Kite Connect - Supertrend implementation
-
-@author: Mayank Rasu (http://rasuquant.com/wp/)
 """
 from kiteconnect import KiteConnect
 import pandas as pd
